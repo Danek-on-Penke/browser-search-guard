@@ -1,0 +1,322 @@
+[
+  {
+    "id": 101,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "safe", "value": "active" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||google.com/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 102,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "safe", "value": "active" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||google.ru/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 103,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "safe", "value": "active" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||google.by/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 104,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "safe", "value": "active" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||google.kz/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 105,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "safe", "value": "active" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||google.com/imgres",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 201,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||yandex.ru/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 202,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||ya.ru/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 203,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||yandex.com/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 204,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||yandex.by/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 205,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||yandex.kz/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 206,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||yandex.ru/images",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 207,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "family", "value": "yes" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||ya.ru/images",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 301,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "adlt", "value": "strict" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||bing.com/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 302,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "adlt", "value": "strict" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||bing.com/images/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 303,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "adlt", "value": "strict" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||bing.com/videos/search",
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 401,
+    "priority": 1,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "transform": {
+          "queryTransform": {
+            "addOrReplaceParams": [
+              { "key": "kp", "value": "1" }
+            ]
+          }
+        }
+      }
+    },
+    "condition": {
+      "urlFilter": "||duckduckgo.com/",
+      "resourceTypes": ["main_frame"]
+    }
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": 501,
+    "priority": 10,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/blocked.html"
+      }
+    },
+    "condition": {
+      "regexFilter": "[?&](q|text)=.*(porno|porn|xxx|nsfw|nude|milf|hentai)",
+      "isUrlFilterCaseSensitive": false,
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 505,
+    "priority": 10,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/blocked.html"
+      }
+    },
+    "condition": {
+      "regexFilter": "[?&](q|text)=(.*([+&]|%20))?sex([+&]|%20|$)",
+      "isUrlFilterCaseSensitive": false,
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 502,
+    "priority": 10,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/blocked.html"
+      }
+    },
+    "condition": {
+      "regexFilter": "[?&](q|text)=.*(%d1%81%d0%b5%d0%ba%d1%81|%d0%bf%d0%be%d1%80%d0%bd)",
+      "isUrlFilterCaseSensitive": false,
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 503,
+    "priority": 10,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/blocked.html"
+      }
+    },
+    "condition": {
+      "regexFilter": "[?&](q|text)=.*(%d1%8d%d1%80%d0%be%d1%82|%d0%b8%d0%bd%d1%86%d0%b5%d1%81%d1%82)",
+      "isUrlFilterCaseSensitive": false,
+      "resourceTypes": ["main_frame"]
+    }
+  },
+  {
+    "id": 504,
+    "priority": 10,
+    "action": {
+      "type": "redirect",
+      "redirect": {
+        "extensionPath": "/blocked.html"
+      }
+    },
+    "condition": {
+      "regexFilter": "[?&](q|text)=.*(%d0%bc%d0%b8%d0%bb%d1%84|%d0%b0%d0%bd%d0%b0%d0%bb|%d1%85%d0%b5%d0%bd%d1%82%d0%b0%d0%b9)",
+      "isUrlFilterCaseSensitive": false,
+      "resourceTypes": ["main_frame"]
+    }
+  }
+]

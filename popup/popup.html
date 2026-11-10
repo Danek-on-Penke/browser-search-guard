@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchGuard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <img src="../icons/icon32.png" alt="SearchGuard Logo" class="brand-logo">
+        <div class="brand-text">
+          <h1 class="brand-title">SearchGuard</h1>
+          <span class="brand-subtitle">Защита поиска</span>
+        </div>
+      </div>
+      <div id="statusBadge" class="status-badge active">
+        <span class="status-dot"></span>
+        <span id="statusText">Включено</span>
+      </div>
+    </header>
+
+    <!-- Master Switch -->
+    <section class="card master-switch-card">
+      <div class="switch-info">
+        <span class="card-title">Главный переключатель</span>
+        <span class="card-desc">Включение всех уровней защиты</span>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="masterToggle" checked>
+        <span class="slider"></span>
+      </label>
+    </section>
+
+    <!-- Two Tiers Section -->
+    <div class="section-label">УРОВНИ ЗАЩИТЫ</div>
+    
+    <div class="tier-list">
+      <!-- Tier 1: declarativeNetRequest -->
+      <div class="card tier-card">
+        <div class="tier-icon">🌐</div>
+        <div class="tier-info">
+          <div class="tier-name">1. Сетевой уровень</div>
+          <div class="tier-desc">Принудительный SafeSearch (DNR)</div>
+        </div>
+        <label class="toggle toggle-sm">
+          <input type="checkbox" id="networkToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Tier 2: Content Script DOM -->
+      <div class="card tier-card">
+        <div class="tier-icon">🔍</div>
+        <div class="tier-info">
+          <div class="tier-name">2. Уровень страницы</div>
+          <div class="tier-desc">DOM-фильтрация выдачи 18+</div>
+        </div>
+        <label class="toggle toggle-sm">
+          <input type="checkbox" id="domToggle" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Mode Selector -->
+    <section class="card mode-section" id="modeSection">
+      <span class="card-title-sm">Режим скрытия элементов</span>
+      <div class="segmented-control">
+        <button type="button" class="segment-btn active" data-mode="blur">Размытие</button>
+        <button type="button" class="segment-btn" data-mode="hide">Скрытие</button>
+        <button type="button" class="segment-btn" data-mode="replace">Плашка</button>
+      </div>
+    </section>
+
+    <!-- Statistics -->
+    <div class="stats-row">
+      <div class="card stat-card">
+        <span class="stat-number" id="pageFilteredCount">0</span>
+        <span class="stat-label">На этой странице</span>
+      </div>
+      <div class="card stat-card">
+        <span class="stat-number" id="totalFilteredCount">0</span>
+        <span class="stat-label">Всего отражено</span>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <footer class="footer">
+      <button type="button" id="openOptionsBtn" class="action-btn secondary">
+        <span>⚙️ Настройки</span>
+      </button>
+      <button type="button" id="reloadTabBtn" class="action-btn primary">
+        <span>🔄 Обновить</span>
+      </button>
+    </footer>
+  </div>
+
+  <script src="../shared/constants.js"></script>
+  <script src="../shared/default-rules.js"></script>
+  <script src="../shared/storage-helper.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

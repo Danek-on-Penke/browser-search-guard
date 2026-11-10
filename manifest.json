@@ -1,0 +1,121 @@
+{
+  "manifest_version": 3,
+  "name": "SearchGuard - Защита поисковой выдачи",
+  "version": "1.0.0",
+  "description": "Двухуровневая защита от нежелательного и 18+ контента: сетевой SafeSearch (declarativeNetRequest) и DOM-фильтрация выдачи.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://google.com/*",
+    "*://*.google.com/*",
+    "*://google.ru/*",
+    "*://*.google.ru/*",
+    "*://google.by/*",
+    "*://*.google.by/*",
+    "*://google.kz/*",
+    "*://*.google.kz/*",
+    "*://ya.ru/*",
+    "*://*.ya.ru/*",
+    "*://yandex.ru/*",
+    "*://*.yandex.ru/*",
+    "*://yandex.com/*",
+    "*://*.yandex.com/*",
+    "*://yandex.by/*",
+    "*://*.yandex.by/*",
+    "*://yandex.kz/*",
+    "*://*.yandex.kz/*",
+    "*://bing.com/*",
+    "*://*.bing.com/*",
+    "*://duckduckgo.com/*",
+    "*://*.duckduckgo.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "safesearch_rules",
+        "enabled": true,
+        "path": "rules/safesearch_rules.json"
+      },
+      {
+        "id": "blocked_queries",
+        "enabled": true,
+        "path": "rules/blocked_queries.json"
+      },
+      {
+        "id": "blocked_domains",
+        "enabled": false,
+        "path": "rules/blocked_domains.json"
+      }
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "blocked.html",
+        "icons/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.google.com/*",
+        "*://*.google.ru/*",
+        "*://*.google.by/*",
+        "*://*.google.kz/*",
+        "*://*.ya.ru/*",
+        "*://*.yandex.ru/*",
+        "*://*.yandex.com/*",
+        "*://*.yandex.by/*",
+        "*://*.yandex.kz/*",
+        "*://*.bing.com/*",
+        "*://*.duckduckgo.com/*"
+      ],
+      "js": [
+        "shared/constants.js",
+        "shared/default-rules.js",
+        "shared/storage-helper.js",
+        "content/adapters/base-adapter.js",
+        "content/adapters/google-adapter.js",
+        "content/adapters/yandex-adapter.js",
+        "content/adapters/bing-adapter.js",
+        "content/adapters/duckduckgo-adapter.js",
+        "content/filter-engine.js",
+        "content/content-script.js"
+      ],
+      "css": [
+        "content/content-style.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "SearchGuard"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  }
+}

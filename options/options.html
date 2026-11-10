@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchGuard — Параметры расширения</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="../icons/icon48.png" alt="SearchGuard" class="logo">
+        <div class="brand-info">
+          <h2>SearchGuard</h2>
+          <span>Manifest V3 v1.0.0</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button type="button" class="nav-item active" data-tab="general">
+          <span class="nav-icon">⚙️</span>
+          <span>Общие параметры</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="engines">
+          <span class="nav-icon">🌐</span>
+          <span>Поисковые системы</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="keywords">
+          <span class="nav-icon">📝</span>
+          <span>Ключевые слова</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="domains">
+          <span class="nav-icon">🚫</span>
+          <span>Блокировка доменов</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="whitelist">
+          <span class="nav-icon">✅</span>
+          <span>Белый список</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="backup">
+          <span class="nav-icon">💾</span>
+          <span>Экспорт / Сброс</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="indicator-dot"></span>
+          <span>Двухуровневая защита</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content">
+      <!-- Toast notification -->
+      <div id="toast" class="toast">Настройки успешно сохранены</div>
+
+      <!-- Tab 1: General -->
+      <section id="tab-general" class="tab-pane active">
+        <div class="pane-header">
+          <h1>Общие параметры защиты</h1>
+          <p>Настройка работы сетевого перехвата SafeSearch и DOM-фильтрации страниц.</p>
+        </div>
+
+        <div class="card setting-group">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-enabled">Главный переключатель SearchGuard</label>
+              <div class="setting-desc">Включение или отключение всех механизмов защиты расширения</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="opt-enabled">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section-title">1. Сетевой уровень (declarativeNetRequest)</div>
+        <div class="card setting-group">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-network">Принудительный SafeSearch</label>
+              <div class="setting-desc">Модификация HTTP-параметров поисковых запросов в Google (safe=active), Яндекс (family=1), Bing (adlt=strict) и DuckDuckGo (kp=1)</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="opt-network">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-block-domains">Сетевая блокировка известных сайтов 18+</label>
+              <div class="setting-desc">Прямая блокировка перехода на популярные порносайты на сетевом уровне</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="opt-block-domains">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="section-title">2. Уровень страницы (Content Script DOM)</div>
+        <div class="card setting-group">
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-dom">DOM-фильтрация выдачи</label>
+              <div class="setting-desc">Сканирование текста, сниппетов, изображений и ссылок в результатах поиска</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="opt-dom">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-mode">Действие над нежелательным результатом</label>
+              <div class="setting-desc">Выберите способ сокрытия найденных 18+ элементов выдачи</div>
+            </div>
+            <select id="opt-mode" class="select-control">
+              <option value="blur">Размытие (с кнопкой показа)</option>
+              <option value="hide">Полное скрытие (удалить из видимости)</option>
+              <option value="replace">Замена информационной плашкой</option>
+            </select>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-unblur">Кнопка «Показать результат»</label>
+              <div class="setting-desc">Разрешить отображение кнопки ручного снятия размытия в оверлее</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="opt-unblur">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <label class="setting-title" for="opt-threshold">Порог чувствительности скоринга (Threshold)</label>
+              <div class="setting-desc">Минимальное количество баллов для фильтрации (по умолчанию: 6). Диапазон: 1–100</div>
+            </div>
+            <div class="input-with-actions" style="width: 120px;">
+              <input type="number" id="opt-threshold" class="input-control" min="1" max="100" step="1" value="6" style="text-align: center;">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tab 2: Search Engines -->
+      <section id="tab-engines" class="tab-pane">
+        <div class="pane-header">
+          <h1>Поддерживаемые поисковые системы</h1>
+          <p>Включайте или отключайте работу SearchGuard для отдельных поисковых сервисов.</p>
+        </div>
+
+        <div class="card setting-group">
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title">Яндекс (ya.ru, yandex.ru, yandex.com)</div>
+              <div class="setting-desc">Сетевой параметр family=1 (Семейный поиск) и селекторы органики serp-item/Organic</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="engine-yandex">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title">Google (google.com, google.ru и др.)</div>
+              <div class="setting-desc">Сетевой параметр safe=active и селекторы органической выдачи .g</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="engine-google">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title">Microsoft Bing (bing.com)</div>
+              <div class="setting-desc">Сетевой параметр adlt=strict и селекторы результатов b_algo</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="engine-bing">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title">DuckDuckGo (duckduckgo.com)</div>
+              <div class="setting-desc">Сетевой параметр kp=1 (Строгий безопасный поиск) и статья article[data-testid]</div>
+            </div>
+            <label class="toggle">
+              <input type="checkbox" id="engine-duckduckgo">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Tab 3: Custom Keywords -->
+      <section id="tab-keywords" class="tab-pane">
+        <div class="pane-header">
+          <h1>Пользовательские ключевые слова</h1>
+          <p>Добавьте собственные слова или фразы для мгновенного скрытия результатов, содержащих их в заголовке или сниппете.</p>
+        </div>
+
+        <div class="card">
+          <div class="input-form">
+            <input type="text" id="newKeywordInput" class="text-input" placeholder="Введите слово или фразу...">
+            <button type="button" id="addKeywordBtn" class="btn primary">Добавить</button>
+          </div>
+          
+          <div class="tags-container" id="keywordTags">
+            <!-- Tags rendered by JS -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Tab 4: Blocked Domains -->
+      <section id="tab-domains" class="tab-pane">
+        <div class="pane-header">
+          <h1>Пользовательские блокируемые домены</h1>
+          <p>Результаты поиска с данными доменами будут скрыты из выдачи, а прямой переход заблокирован через declarativeNetRequest.</p>
+        </div>
+
+        <div class="card">
+          <div class="input-form">
+            <input type="text" id="newDomainInput" class="text-input" placeholder="example.com">
+            <button type="button" id="addDomainBtn" class="btn primary">Добавить</button>
+          </div>
+
+          <div class="tags-container" id="domainTags">
+            <!-- Tags rendered by JS -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Tab 5: Whitelist -->
+      <section id="tab-whitelist" class="tab-pane">
+        <div class="pane-header">
+          <h1>Белый список исключений</h1>
+          <p>Сайты и поисковые запросы из этих списков исключаются из фильтрации и никогда не будут заблокированы.</p>
+        </div>
+
+        <div class="section-title">1. Доверенные сайты и домены («Trust this site»)</div>
+        <div class="card">
+          <div class="input-form">
+            <input type="text" id="newWhitelistInput" class="text-input" placeholder="safe-site.org">
+            <button type="button" id="addWhitelistBtn" class="btn primary">Добавить домен</button>
+          </div>
+
+          <div class="tags-container" id="whitelistTags">
+            <!-- Tags rendered by JS -->
+          </div>
+        </div>
+
+        <div class="section-title">2. Разрешённые фразы и запросы («Allow this query»)</div>
+        <div class="card">
+          <div class="input-form">
+            <input type="text" id="newWhitelistPhraseInput" class="text-input" placeholder="например: сексуальное здоровье или super bowl xxx">
+            <button type="button" id="addWhitelistPhraseBtn" class="btn primary">Добавить фразу</button>
+          </div>
+
+          <div class="tags-container" id="whitelistPhraseTags">
+            <!-- Tags rendered by JS -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Tab 6: Backup / Reset -->
+      <section id="tab-backup" class="tab-pane">
+        <div class="pane-header">
+          <h1>Резервное копирование и сброс</h1>
+          <p>Экспорт текущей конфигурации в JSON, импорт или возврат к заводским настройкам.</p>
+        </div>
+
+        <div class="card setting-group">
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title">Экспорт настроек</div>
+              <div class="setting-desc">Сохранить все правила, ключевые слова и параметры в JSON-файл</div>
+            </div>
+            <button type="button" id="exportBtn" class="btn secondary">Экспорт (JSON)</button>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title">Импорт настроек</div>
+              <div class="setting-desc">Загрузить параметры и правила из JSON-файла</div>
+            </div>
+            <div>
+              <input type="file" id="importFile" accept=".json" style="display: none;">
+              <button type="button" id="importBtn" class="btn secondary">Импорт (JSON)</button>
+            </div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="setting-row">
+            <div class="setting-info">
+              <div class="setting-title text-danger">Сброс настроек</div>
+              <div class="setting-desc">Восстановить настройки по умолчанию и очистить статистику</div>
+            </div>
+            <button type="button" id="resetBtn" class="btn danger">Сбросить всё</button>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../shared/constants.js"></script>
+  <script src="../shared/default-rules.js"></script>
+  <script src="../shared/storage-helper.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>
